@@ -1,0 +1,12 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "80:80"
+        volumes:
+            - D:\Codes\Laravel\Test\docker\html:/var/www/html
+        links:
+            - "database:cas"
+    database:
+        image: cassandra:3.0.25  
