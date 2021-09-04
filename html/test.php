@@ -1,10 +1,10 @@
 <?php
-$cluster = Cassandra::cluster()  				
-               ->withContactPoints('database') 
-               ->withPort(9042)
-               ->build();
+$cluster = Cassandra::cluster()
+    ->withContactPoints('database')
+    ->withPort(9042)
+    ->build();
 
-$session   = $cluster->connect();        	
+$session = $cluster->connect();
 
 $createKeyspace = <<<EOD
 CREATE KEYSPACE measurements
@@ -31,7 +31,7 @@ $batch = new Cassandra\BatchStatement();
 
 $batch->add(
     "INSERT INTO events (id, col1, col2) VALUES (1, ?, ?)",
-    array('hello','world')
+    array('hello', 'world')
 );
 
 $session->execute($batch);
